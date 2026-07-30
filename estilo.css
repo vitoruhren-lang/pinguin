@@ -1,37 +1,24 @@
-*{
+* {
     margin: 0;
     padding: 0;
-}
-
-.cabecalho {
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #7e3e1c;
-}
-
-.cartao {
-    width: 260px;
-    height: 200px;
-}
-
-.cartao-imagem {
-    width: 100%;
+    box-sizing: border-box; /* Garante que o padding não quebre a largura dos elementos */
 }
 
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f5f2f2;
+    background-color: #000000; /* Fundo alterado para preto */
+    color: #ffffff; /* Texto padronizado em branco para contraste */
 }
 
-main {
-    flex: 1;
+/* Cabeçalho */
+.cabecalho {
+    padding: 15px 25px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    background-color: #7e3e1c;
 }
 
 .cabecalho-link {
@@ -44,14 +31,34 @@ h1 {
     font-size: 24px;
 }
 
-footer {
-    background-color: #7e3e1c;
-    padding: 15px 25px;
-    color: #fff;
+/* Conteúdo Principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    padding: 40px 20px;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cartões quebrem de linha em telas menores */
+    justify-content: center; /* Centraliza os cartões horizontalmente */
+    gap: 24px;
+}
+
+/* Estrutura do Cartão 3D */
+.cartao {
+    width: 260px;
+    height: 200px;
+    perspective: 1000px; /* Adicionado para dar efeito de profundidade 3D no flip */
 }
 
 .cartao-interno {
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
@@ -62,16 +69,29 @@ footer {
 
 .cartao-frente, .cartao-verso {
     position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1); /* Sombra ajustada para fundo escuro */
     backface-visibility: hidden;
 }
 
 .cartao-verso {
     transform: rotateY(180deg);
+    background-color: #1a1a1a; /* Fundo escuro para a parte de trás do cartão */
 }
 
-section {
-    display: flex;
-    gap: 16px;
+.cartao-imagem {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha o cartão sem distorcer */
+    border-radius: 12px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #7e3e1c;
+    padding: 15px 25px;
+    color: #fff;
+    text-align: center;
 }
